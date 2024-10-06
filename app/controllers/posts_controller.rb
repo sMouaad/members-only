@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [ :create, :new ]
   def create
-    p current_user
+    current_user = current_user
+    current_user.posts.create(post_params)
   end
 
   def new
