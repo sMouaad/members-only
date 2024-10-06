@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: [ :create, :new ]
+  before_action :authenticate_user!, only: [ :create, :new ]
   def create
+    p current_user
   end
 
   def new
@@ -10,10 +11,7 @@ class PostsController < ApplicationController
   def index
   end
   private
-
-  def require_login
-    unless user_signed_in?
-      flash[:error] = "You should sign in first"
-    end
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 end
