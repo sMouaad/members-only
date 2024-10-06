@@ -16,10 +16,11 @@
     <%else%>
         No posts have been created yet, <%=link_to "create your posts", new_post_path%> now!
     <%end%>
-    <div style="position:absolute;bottom:8px;">
+    <div style="position:absolute;bottom:8px;display:flex;gap:16px;">
     <%unless user_signed_in?%>
             <%=link_to "Sign in", new_user_session_path%> or <%= link_to "Sign up",new_user_registration_path%>
     <%else%>
             <%=link_to "Create a post", new_post_path%>
+            <%= link_to "Sign out", destroy_session_path(:user), data: { turbo_method: :delete } %>
     <%end%>
     </div>
