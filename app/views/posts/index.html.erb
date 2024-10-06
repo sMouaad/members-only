@@ -1,14 +1,23 @@
 <h1>Members Only</h1>
 <ul>
-    <%@posts.each do |post|%>
-        <li>
-            <h3>
-                <%=post.title%>
-                <%if user_signed_in?%>
-                <span style="font-weight:normal;font-size:small;color:gray;">by <%=User.find(post.user_id).username%></span>
-                <%end%>
-            </h3>
-            <%=post.content%>
-        </li>
+    <%unless @posts.empty?%>
+        <%@posts.each do |post|%>
+            <li>
+                <h3>
+                    <%=post.title%>
+                    <%if user_signed_in?%>
+                    <span style="font-weight:normal;font-size:small;color:gray;">by <%=User.find(post.user_id).username%></span>
+                    <%end%>
+                </h3>
+                <%=post.content%>
+            </li>
+        <%end%>
+    <%else%>
+        No posts have been created yet, <%=link_to "create your posts", new_post%> now!
+    <%end%>
+    <%unless user_signed_in?%>
+        <div style="margin-top:auto;">
+            <%=link_to "Sign in", new_user_session%> or <%= link_to "Sign up",new_user_registration%>
+        </div>
     <%end%>
 </ul>
