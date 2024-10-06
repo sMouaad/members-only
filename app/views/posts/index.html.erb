@@ -1,0 +1,14 @@
+<h1>Members Only</h1>
+<ul>
+    <%@posts.each do |post|%>
+        <li>
+            <h3>
+                <%=post.title%>
+                <%if user_signed_in?%>
+                <span style="font-weight:normal;font-size:small;color:gray;">by <%=User.find(post.user_id).username%></span>
+                <%end%>
+            </h3>
+            <%=post.content%>
+        </li>
+    <%end%>
+</ul>
