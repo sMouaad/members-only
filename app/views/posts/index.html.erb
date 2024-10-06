@@ -13,11 +13,11 @@
             </li>
         <%end%>
     <%else%>
-        No posts have been created yet, <%=link_to "create your posts", new_post%> now!
+        No posts have been created yet, <%=link_to "create your posts", new_post_path%> now!
     <%end%>
     <%unless user_signed_in?%>
         <div style="margin-top:auto;">
-            <%=link_to "Sign in", new_user_session%> or <%= link_to "Sign up",new_user_registration%>
+            <%=link_to "Sign in", new_user_session_path%> or <%= link_to "Sign up",new_user_registration_path%>
         </div>
     <%end%>
 </ul>
