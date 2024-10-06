@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "posts#index"
   devise_for :users, path: "auth", controllers: { registrations: "users/registrations" }
   resources :posts, only: [ :new, :create, :index ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
